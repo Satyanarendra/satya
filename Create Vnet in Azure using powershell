@@ -24,5 +24,8 @@ Add-AzVirtualNetworkSubnetConfig -Name "Backend" -VirtualNetwork $Vnet -AddressP
 
 Set-AzVirtualNetwork -VirtualNetwork $Vnet
 
+#To delet Vnet
+Remove-AzVirtualNetwork -ResourceGroupName Test_VN1 -Name myVirtualNetwork
+
 
 
