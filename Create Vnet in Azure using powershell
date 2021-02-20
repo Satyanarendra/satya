@@ -1,0 +1,28 @@
+# To connect with Azure account
+
+Login-AzAccount
+
+# To get the azure subscriptions
+
+Get-AzSubscription
+
+
+#Create Azure RG
+
+New-AzResourceGroup -Name "Satya" -Location "Central US" 
+
+#Create Vnet
+
+$Vnet=New-AzVirtualNetwork -ResourceGroupName "Satya" -Name "PSVnet" -Location "Central US"  -AddressPrefix 192.168.0.0/16
+
+#add subnet to Vnet
+
+Add-AzVirtualNetworkSubnetConfig -Name "Frontend" -VirtualNetwork $Vnet -AddressPrefix 192.168.1.0/24
+Add-AzVirtualNetworkSubnetConfig -Name "Backend" -VirtualNetwork $Vnet -AddressPrefix 192.168.2.0/24
+
+#Save the changes to Azure virtual networks
+
+Set-AzVirtualNetwork -VirtualNetwork $Vnet
+
+
+
